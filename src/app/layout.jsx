@@ -4,7 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import customizeTheme from "@/theme/customizeTheme";
 import { Button, CssBaseline, Paper, Typography } from "@mui/material";
-import { useState } from "react";
+import { createContext, useMemo, useState } from "react";
 import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
 import { amber, deepOrange, grey } from "@mui/material/colors";
 
@@ -64,20 +64,79 @@ const getDesignTokens = (mode) => ({
   },
 });
 
+const token = (mode) => ({
+  ...(mode === "dark"
+    ? {
+        red: {
+          100: "#AD2831",
+        },
+      }
+    : {
+        red: {
+          100: "#38040E",
+        },
+      }),
+});
+
+const themeSetting = (mode)=>{
+  const color = token(mode)
+  return {
+    palette: {
+      mode: mode,
+      ...(mode === "dark"
+      ? {
+          primary: {
+            main: color.red[100],
+          },
+        }
+      : {
+        primary: {
+          main: color.red[100],
+        },
+        }),
+    }
+  }
+}
+
+const colorMoodContext = createContext({
+  toggleColorMode:()=>{}
+})
+
+const useMode = ()=>{
+  const [mode, setMode] = useState("light");
+  const colorMode = useMemo(
+    () => ({
+      // The dark mode switch would invoke this method
+      toggleColorMode: () => {
+        setMode((prevMode) =>
+          prevMode === 'light' ? 'dark' : 'light',
+        );
+      },
+    }),
+    [],
+  );
+  const useThemeCustomize = useMemo(()=> createTheme(themeSetting(mode)),[mode])
+
+  return [useThemeCustomize,colorMode]
+}
+
 export default function RootLayout({ children }) {
+const [useThemeCustomize,colorMode] =  useMode()
   const [theme, setTheme] = useState(false);
-  const useThemeColor = useTheme();
+  // const useThemeColor = useTheme();
 
   const darkModeTheme = createTheme(getDesignTokens(theme ? "dark" : "light"));
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider theme={darkModeTheme}>
+        <colorMoodContext.Provider  value={colorMode}>
+
+        <ThemeProvider theme={useThemeCustomize}>
           <CssBaseline />
           <>
-            <button onClick={() => setTheme(!theme)}>change </button>
-            <Typography variant="h6">{theme ? "dark" :  "white"}</Typography>
+            <button  >change </button>
+            <Typography variant="h6">{theme ? "dark" : "white"}</Typography>
             <Typography sx={{ color: "custom" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
               eos?
@@ -86,6 +145,7 @@ export default function RootLayout({ children }) {
             {children}
           </>
         </ThemeProvider>
+         </colorMoodContext.Provider>
       </body>
     </html>
   );
