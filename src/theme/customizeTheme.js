@@ -10,10 +10,13 @@ const customizeTheme = createTheme(theme,{
     danger: orange[500],
   },
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       main: "#53c28b",
     },
+    whiteColor:{
+      main:"#fffff"
+    }
   },
   typography: {
     fontFamily: "'Inter', sans-serif",

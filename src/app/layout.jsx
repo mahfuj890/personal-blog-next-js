@@ -3,10 +3,18 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import customizeTheme from "@/theme/customizeTheme";
-import { Button, CssBaseline, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CssBaseline,
+  Paper,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { createContext, useMemo, useState } from "react";
 import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
 import { amber, deepOrange, grey } from "@mui/material/colors";
+import Header from "@/components/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,50 +86,51 @@ const token = (mode) => ({
       }),
 });
 
-const themeSetting = (mode)=>{
-  const color = token(mode)
+const themeSetting = (mode) => {
+  const color = token(mode);
   return {
     palette: {
       mode: mode,
       ...(mode === "dark"
-      ? {
-          primary: {
-            main: color.red[100],
-          },
-        }
-      : {
-        primary: {
-          main: color.red[100],
-        },
-        }),
-    }
-  }
-}
+        ? {
+            primary: {
+              main: color.red[100],
+            },
+          }
+        : {
+            primary: {
+              main: color.red[100],
+            },
+          }),
+    },
+  };
+};
 
 const colorMoodContext = createContext({
-  toggleColorMode:()=>{}
-})
+  toggleColorMode: () => {},
+});
 
-const useMode = ()=>{
+const useMode = () => {
   const [mode, setMode] = useState("light");
   const colorMode = useMemo(
     () => ({
       // The dark mode switch would invoke this method
       toggleColorMode: () => {
-        setMode((prevMode) =>
-          prevMode === 'light' ? 'dark' : 'light',
-        );
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
-    [],
+    []
   );
-  const useThemeCustomize = useMemo(()=> createTheme(themeSetting(mode)),[mode])
+  const useThemeCustomize = useMemo(
+    () => createTheme(themeSetting(mode)),
+    [mode]
+  );
 
-  return [useThemeCustomize,colorMode]
-}
+  return [useThemeCustomize, colorMode];
+};
 
 export default function RootLayout({ children }) {
-const [useThemeCustomize,colorMode] =  useMode()
+  const [useThemeCustomize, colorMode] = useMode();
   const [theme, setTheme] = useState(false);
   // const useThemeColor = useTheme();
 
@@ -130,22 +139,26 @@ const [useThemeCustomize,colorMode] =  useMode()
   return (
     <html lang="en">
       <body className={inter.className}>
-        <colorMoodContext.Provider  value={colorMode}>
-
-        <ThemeProvider theme={useThemeCustomize}>
-          <CssBaseline />
-          <>
-            <button  >change </button>
+        <colorMoodContext.Provider value={colorMode}>
+          <ThemeProvider theme={customizeTheme}>
+            <CssBaseline />
+            <>
+              {/* <button  >change </button>
             <Typography variant="h6">{theme ? "dark" : "white"}</Typography>
             <Typography sx={{ color: "custom" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
               eos?
             </Typography>
-            <Button>Button</Button>
-            {children}
-          </>
-        </ThemeProvider>
-         </colorMoodContext.Provider>
+            <Button>Button</Button> */}
+              <Header />
+              <Box component="main">
+                <Toolbar />
+
+                {children}
+              </Box>
+            </>
+          </ThemeProvider>
+        </colorMoodContext.Provider>
       </body>
     </html>
   );
