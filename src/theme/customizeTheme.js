@@ -2,21 +2,20 @@ import { orange } from "@mui/material/colors";
 import { createTheme, useTheme } from "@mui/material";
 
 //For Breakpoints
-const theme = createTheme()
+const theme = createTheme();
 
-
-const customizeTheme = createTheme(theme,{
+const customizeTheme = createTheme(theme, {
   status: {
     danger: orange[500],
   },
   palette: {
-    mode: 'dark',
+    mode: "dark",
     primary: {
       main: "#53c28b",
     },
-    whiteColor:{
-      main:"#fffff"
-    }
+    whiteColor: {
+      main: "#fffff",
+    },
   },
   typography: {
     fontFamily: "'Inter', sans-serif",
@@ -42,13 +41,23 @@ const customizeTheme = createTheme(theme,{
       color: "#0D0C11",
       marginBottom: "15px",
     },
-    modalTitle: {
+    heroTitle: {
       fontWeight: 600,
-      fontSize: "20px",
-      lineHeight: "28px",
-      color: "#0D0C11",
-      [theme.breakpoints.down('sm')]: {
-        fontSize: "16px"
+      fontSize: "72px",
+      background: "linear-gradient(to bottom, #194c33, #bbb)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      [theme.breakpoints.between("lg","xl")]: {
+        fontSize: "50px",
+      },
+      [theme.breakpoints.between("md","lg")]: {
+        fontSize: "44px",
+      },
+      [theme.breakpoints.between("sm","md")]: {
+        fontSize: "36px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "32px",
       },
     },
     modalInnerTitle: {
@@ -56,16 +65,20 @@ const customizeTheme = createTheme(theme,{
       fontSize: "18px",
       lineHeight: "24px",
       color: "#0D0C11",
-      [theme.breakpoints.down('sm')]: {
-        fontSize: "16px"
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "16px",
       },
     },
-    modalInnerPara: {
+   heroPara: {
       fontWeight: 400,
-      fontSize: "14px",
-      lineHeight: "24px",
+      fontSize: "24px",
       color: "#31384A",
-
+      [theme.breakpoints.between("sm","md")]: {
+        fontSize: "20px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "18px",
+      },
     },
   },
 
@@ -76,9 +89,9 @@ const customizeTheme = createTheme(theme,{
           formLabel: "h4",
           formLabelSmall: "h6",
           formTitle: "h3",
-          modalTitle: "h3",
+          heroTitle: "h1",
           modalInnerTitle: "h3",
-          modalInnerPara: "p",
+          heroPara: "p",
         },
       },
     },
@@ -147,10 +160,9 @@ const customizeTheme = createTheme(theme,{
             height: "44px",
             borderRadius: "8px",
           },
-          "&:not(.Mui-checked).MuiButtonBase-root":{
-            color:"#A6ACB8",
+          "&:not(.Mui-checked).MuiButtonBase-root": {
+            color: "#A6ACB8",
           },
-
         },
       },
     },
@@ -158,7 +170,7 @@ const customizeTheme = createTheme(theme,{
       styleOverrides: {
         root: {
           "&.MuiStack-root": {
-            alignItems:"center",
+            alignItems: "center",
             flexDirection: "row",
             flexWrap: "wrap",
           },
@@ -168,24 +180,24 @@ const customizeTheme = createTheme(theme,{
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
-          ".MuiTypography-root":{
+          ".MuiTypography-root": {
             fontWeight: 500,
             fontSize: "14px",
             lineHeight: "20px",
             color: "#31384A",
-        }
+          },
         },
       },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: 'white',
-          color: '#31384A',
-          border: '1px solid #dadde9',
-          ".MuiTooltip-arrow":{
-            color: '#f1f1f1',
-          }
+          backgroundColor: "white",
+          color: "#31384A",
+          border: "1px solid #dadde9",
+          ".MuiTooltip-arrow": {
+            color: "#f1f1f1",
+          },
         },
       },
     },
