@@ -60,13 +60,17 @@ const customizeTheme = createTheme(theme, {
         fontSize: "32px",
       },
     },
-    modalInnerTitle: {
+    aboutTitle: {
       fontWeight: 600,
-      fontSize: "18px",
+      fontSize: "24px",
       lineHeight: "24px",
       color: "#0D0C11",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "16px",
+      [theme.breakpoints.between("md","lg")]: {
+        fontSize: "22px",
+      },
+
+      [theme.breakpoints.down("md")]: {
+        fontSize: "20px",
       },
     },
    heroPara: {
@@ -76,6 +80,15 @@ const customizeTheme = createTheme(theme, {
       [theme.breakpoints.between("sm","md")]: {
         fontSize: "20px",
       },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "18px",
+      },
+    },
+   aboutPara: {
+      fontWeight: 400,
+      fontSize: "18px",
+      color: "#31384A",
+
       [theme.breakpoints.down("sm")]: {
         fontSize: "18px",
       },
@@ -90,8 +103,9 @@ const customizeTheme = createTheme(theme, {
           formLabelSmall: "h6",
           formTitle: "h3",
           heroTitle: "h1",
-          modalInnerTitle: "h3",
+          aboutTitle: "h3",
           heroPara: "p",
+          aboutPara: "p",
         },
       },
     },

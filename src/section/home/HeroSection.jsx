@@ -18,6 +18,7 @@ function HeroSection() {
             item
             sm={6}
             xs={12}
+            order={{md:2,xs:1}}
             sx={{
               img: {
                 maxHeight: { md: 600, xs: 300 },
@@ -26,7 +27,7 @@ function HeroSection() {
           >
             <Image src={heroImage} alt="Hero image" />
           </Grid>
-          <Grid item sm={6} xs={12}>
+          <Grid item sm={6} xs={12} >
             <Box>
               <Typography variant={"heroTitle"}>
                 Better design for your digital products.
