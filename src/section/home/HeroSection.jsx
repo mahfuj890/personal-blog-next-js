@@ -36,7 +36,7 @@ function HeroSection() {
                 Turning your Idea into Reality. We bring together the teams from
                 the global tech industry
               </Typography>
-              <Button isLinkable path="/" text={"See Our Works"} />
+              <Button isLinkable path="/portfolio" text={"See Our Works"} />
             </Box>
           </Grid>
         </Grid>

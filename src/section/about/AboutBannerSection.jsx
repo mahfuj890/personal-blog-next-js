@@ -2,7 +2,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 function AboutBannerSection() {
   return (
@@ -15,6 +15,7 @@ function AboutBannerSection() {
           alt=""
           sx={{ objectFit: "cover", filter: "grayscale(100%)" }}
         />
+
         <Box
           sx={{
             position: "absolute",
