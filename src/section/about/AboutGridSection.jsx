@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/button/Button";
+import ButtonComponent from "@/components/button/ButtonComponent";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 
@@ -58,7 +58,7 @@ function AboutGridSection() {
                 <br /> - Mobile Apps
               </Typography>
               <Box sx={{ mt: 2 }}>
-                <Button isLinkable={true} path={"/contact"} text={"Contact"} />
+                <ButtonComponent isLinkable={true} path={"/contact"} text={"Contact"} />
               </Box>
             </Box>
           </Grid>

@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import heroImage from "public/image/hero.png";
-import Button from "@/components/button/Button";
+import ButtonComponent from "@/components/button/ButtonComponent";
 
 function HeroSection() {
   return (
@@ -36,7 +36,7 @@ function HeroSection() {
                 Turning your Idea into Reality. We bring together the teams from
                 the global tech industry
               </Typography>
-              <Button isLinkable path="/portfolio" text={"See Our Works"} />
+              <ButtonComponent isLinkable path="/portfolio" text={"See Our Works"} />
             </Box>
           </Grid>
         </Grid>

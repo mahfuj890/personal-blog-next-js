@@ -47,13 +47,13 @@ const customizeTheme = createTheme(theme, {
       background: "linear-gradient(to bottom, #194c33, #bbb)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
-      [theme.breakpoints.between("lg","xl")]: {
+      [theme.breakpoints.between("lg", "xl")]: {
         fontSize: "50px",
       },
-      [theme.breakpoints.between("md","lg")]: {
+      [theme.breakpoints.between("md", "lg")]: {
         fontSize: "44px",
       },
-      [theme.breakpoints.between("sm","md")]: {
+      [theme.breakpoints.between("sm", "md")]: {
         fontSize: "36px",
       },
       [theme.breakpoints.down("sm")]: {
@@ -65,7 +65,7 @@ const customizeTheme = createTheme(theme, {
       fontSize: "24px",
       lineHeight: "24px",
       color: "#0D0C11",
-      [theme.breakpoints.between("md","lg")]: {
+      [theme.breakpoints.between("md", "lg")]: {
         fontSize: "22px",
       },
 
@@ -73,24 +73,40 @@ const customizeTheme = createTheme(theme, {
         fontSize: "20px",
       },
     },
-   heroPara: {
+    heroPara: {
       fontWeight: 400,
       fontSize: "24px",
       color: "#31384A",
-      [theme.breakpoints.between("sm","md")]: {
+      [theme.breakpoints.between("sm", "md")]: {
         fontSize: "20px",
       },
       [theme.breakpoints.down("sm")]: {
         fontSize: "18px",
       },
     },
-   aboutPara: {
+    aboutPara: {
       fontWeight: 400,
       fontSize: "18px",
       color: "#31384A",
 
       [theme.breakpoints.down("sm")]: {
         fontSize: "18px",
+      },
+    },
+    contactTitle: {
+      fontWeight: 600,
+      fontSize: "60px",
+      [theme.breakpoints.between("lg", "xl")]: {
+        fontSize: "45px",
+      },
+      [theme.breakpoints.between("md", "lg")]: {
+        fontSize: "36px",
+      },
+      [theme.breakpoints.between("sm", "md")]: {
+        fontSize: "32px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "26px",
       },
     },
   },
@@ -104,6 +120,7 @@ const customizeTheme = createTheme(theme, {
           formTitle: "h3",
           heroTitle: "h1",
           aboutTitle: "h3",
+          contactTitle: "h3",
           heroPara: "p",
           aboutPara: "p",
         },
@@ -147,12 +164,14 @@ const customizeTheme = createTheme(theme, {
     MuiTextField: {
       styleOverrides: {
         root: {
+          width: "100%",
           ".MuiInputBase-root": {
-            height: "44px",
+            minHeight: "44px",
             borderRadius: "8px",
             fontWeight: 400,
-            fontSize: "14px",
+            fontSize: "16px",
             color: "#0D0C11",
+            border: "1px solid #53c28b",
           },
         },
       },

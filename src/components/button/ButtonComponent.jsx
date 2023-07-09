@@ -1,9 +1,9 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-function Button({ isLinkable, text, path, onClick }) {
+function ButtonComponent({ isLinkable, text, path, onClick, type }) {
   if (isLinkable) {
     return (
       <Box
@@ -25,7 +25,8 @@ function Button({ isLinkable, text, path, onClick }) {
         {text}
       </Box>
     );
-  } else if (isLinkable === false) {
+  }
+  if (!isLinkable) {
     return (
       <Button
         sx={{
@@ -38,16 +39,19 @@ function Button({ isLinkable, text, path, onClick }) {
           color: "white",
           "&:hover": {
             opacity: 0.8,
+            backgroundColor: "#53c28b",
           },
         }}
         onClick={onClick}
+        type={type}
       >
         {text}
       </Button>
     );
   }
 }
-Button.defaultProps = {
+ButtonComponent.defaultProps = {
   text: "Add button text",
+  type: "button",
 };
-export default Button;
+export default ButtonComponent;
