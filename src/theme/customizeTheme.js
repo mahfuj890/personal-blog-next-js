@@ -109,6 +109,22 @@ const customizeTheme = createTheme(theme, {
         fontSize: "26px",
       },
     },
+    portfolioTitle: {
+      fontWeight: 800,
+      fontSize: "80px",
+      [theme.breakpoints.between("lg", "xl")]: {
+        fontSize: "55px",
+      },
+      [theme.breakpoints.between("md", "lg")]: {
+        fontSize: "45px",
+      },
+      [theme.breakpoints.between("sm", "md")]: {
+        fontSize: "38px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "32px",
+      },
+    },
   },
 
   components: {
@@ -121,6 +137,7 @@ const customizeTheme = createTheme(theme, {
           heroTitle: "h1",
           aboutTitle: "h3",
           contactTitle: "h3",
+          portfolioTitle: "h3",
           heroPara: "p",
           aboutPara: "p",
         },
