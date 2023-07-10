@@ -90,7 +90,7 @@ const customizeTheme = createTheme(theme, {
       color: "#31384A",
 
       [theme.breakpoints.down("sm")]: {
-        fontSize: "18px",
+        fontSize: "16px",
       },
     },
     contactTitle: {
