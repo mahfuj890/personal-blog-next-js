@@ -1,25 +1,29 @@
-"use client"
+// "use client"
 import Link from "next/link";
 import Image from "next/image";
+import BlogData from "@/components/blog/BlogData";
+import { notFound } from "next/navigation";
 
 async function getData() {
-  const res = await fetch(`${process.env.LOCAL_HOST_API}/api/posts`, {
-    cache: "no-store",
+  const res = await fetch(`${process.env.JSON_API}/posts?_limit=10`, {
+    next: { revalidate: 10 },
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return notFound();
   }
 
   return res.json();
 }
 
 async function BlogPage() {
-    const data = await getData();
-    console.log("🚀 ~ file: page.jsx:19 ~ BlogPage ~ data:", data)
+  const data = await getData();
+
   return (
-    <div>BlogPage {process.env.LOCAL_HOST_API}</div>
-  )
+    <div>
+      <BlogData data={data} />
+    </div>
+  );
 }
 
-export default BlogPage
+export default BlogPage;
