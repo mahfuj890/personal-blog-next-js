@@ -6,7 +6,6 @@ import Link from "next/link";
 import website from "public/image/websites.jpg";
 
 function BlogData({ data }) {
-  console.log("🚀 ~ file: BlogData.jsx:9 ~ BlogData ~ data:", data);
   return (
     <Box sx={{ mt: 4 }}>
       <Container>
@@ -14,7 +13,7 @@ function BlogData({ data }) {
           return (
             <Box
               component={Link}
-              href={"/"}
+              href={`blog/${item?.id}`}
               key={item?.id}
               sx={{ display: "block", mb: 2 }}
             >
