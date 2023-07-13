@@ -1,9 +1,5 @@
-// "use client"
-import Link from "next/link";
-import Image from "next/image";
-import BlogData from "@/components/blog/BlogData";
+import DashboardPostSection from "@/section/dashboard/DashboardPostSection"
 import { notFound } from "next/navigation";
-
 
 async function getData() {
   const res = await fetch(`${process.env.JSON_API}/posts?_limit=10`, {
@@ -17,14 +13,13 @@ async function getData() {
   return res.json();
 }
 
-async function BlogPage() {
-  const data = await getData();
-
+async function DashboardPage() {
+    const data = await getData();
   return (
     <div>
-      <BlogData data={data} />
+        <DashboardPostSection  data={data}/>
     </div>
-  );
+  )
 }
 
-export default BlogPage;
+export default DashboardPage
