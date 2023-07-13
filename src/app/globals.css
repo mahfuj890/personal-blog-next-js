@@ -10,11 +10,15 @@ body {
   overflow-x: hidden;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
 }
 
-a, span, img, svg {
+a,
+span,
+img,
+svg {
   display: inline-block;
 }
 

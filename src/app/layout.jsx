@@ -15,6 +15,8 @@ import { createContext, useMemo, useState } from "react";
 import { ThemeProvider, useTheme, createTheme } from "@mui/material/styles";
 import { amber, deepOrange, grey } from "@mui/material/colors";
 import Header from "@/components/header/Header";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -158,6 +160,7 @@ export default function RootLayout({ children }) {
               </Box>
             </>
           </ThemeProvider>
+          <ToastContainer />
         </colorMoodContext.Provider>
       </body>
     </html>
