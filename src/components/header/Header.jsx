@@ -136,7 +136,16 @@ function Header(props) {
               </IconButton>
             </Box>
 
-            <Box sx={{ display: { xs: "none", sm: "flex", gap: "10px" } }}>
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                },
+              }}
+            >
               {navItems.map((item) => {
                 return (
                   <Link href={item?.path} key={item?.id}>
@@ -144,6 +153,7 @@ function Header(props) {
                   </Link>
                 );
               })}
+              <Button variant="contained">Log Out</Button>
 
               {/* dropdown menu  */}
               {/* <Button
