@@ -1,9 +1,11 @@
 "use client";
+import ButtonComponent from "@/components/button/ButtonComponent";
 import {
   Box,
   Container,
   Grid,
   IconButton,
+  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -15,11 +17,16 @@ import { FaTimes } from "react-icons/fa";
 
 function DashboardPostSection({ data }) {
   const [blogData, setBlogData] = useState(data);
+
+  const handleDeleteBlog = (id) => {
+    setBlogData(blogData.filter((item) => item?.id !== id));
+  };
+
   return (
     <Box sx={{ mt: 3 }}>
       <Container maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item md={8}>
+          <Grid item md={8} xs={12} sx={{ order: { md: 1, xs: 2 } }}>
             {blogData?.length <= 0 ? (
               <Typography variant="aboutTitle">
                 There is no blog post
@@ -63,9 +70,11 @@ function DashboardPostSection({ data }) {
                           </Typography>
                         </Box>
                       </Grid>
-                      <Grid xs={1.5}>
+                      <Grid xs={1.5} sx={{ pl: { md: 0, xs: 2 } }}>
                         <Tooltip title="Delete">
-                          <IconButton>
+                          <IconButton
+                            onClick={() => handleDeleteBlog(item?.id)}
+                          >
                             <FaTimes />
                           </IconButton>
                         </Tooltip>
@@ -88,6 +97,32 @@ function DashboardPostSection({ data }) {
                 </Box>
               </Grid>
             </Grid> */}
+          </Grid>
+          <Grid item md={4} xs={12} sx={{ order: { md: 2, xs: 1 } }}>
+            <Box component="form" sx={{ mt: 2 }}>
+              <Box sx={{ mb: 3 }}>
+                <TextField placeholder="Enter title" />
+              </Box>
+              <Box sx={{ mb: 3 }}>
+                <TextField placeholder="Enter Image Url" />
+              </Box>
+              <Box sx={{ mb: 3 }}>
+                <TextField placeholder="Write Blog" multiline minRows={3} />
+              </Box>
+              <Box
+                sx={{
+                  button: {
+                    width: 1,
+                  },
+                }}
+              >
+                <ButtonComponent
+                  isLinkable={false}
+                  text={"Add"}
+                  type={"submit"}
+                />
+              </Box>
+            </Box>
           </Grid>
         </Grid>
       </Container>
