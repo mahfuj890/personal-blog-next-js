@@ -9,8 +9,8 @@ function LoginPage() {
   //Login form submit
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    toast.success("Successfully Login");
-    localStorage.setItem("isUserLogin","true")
+    // toast.success("Successfully Login");
+    // localStorage.setItem("isUserLogin","true")
   };
 
   useEffect(() => {

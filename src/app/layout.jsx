@@ -17,6 +17,7 @@ import { amber, deepOrange, grey } from "@mui/material/colors";
 import Header from "@/components/header/Header";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UseAuthContextProvider } from "@/context/UseAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -144,6 +145,9 @@ export default function RootLayout({ children }) {
         <colorMoodContext.Provider value={colorMode}>
           <ThemeProvider theme={customizeTheme}>
             <CssBaseline />
+            <UseAuthContextProvider>
+
+
             <>
               {/* <button  >change </button>
             <Typography variant="h6">{theme ? "dark" : "white"}</Typography>
@@ -159,6 +163,7 @@ export default function RootLayout({ children }) {
                 {children}
               </Box>
             </>
+            </UseAuthContextProvider>
           </ThemeProvider>
           <ToastContainer />
         </colorMoodContext.Provider>

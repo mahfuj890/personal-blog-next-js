@@ -18,6 +18,7 @@ import { FaBars, FaBlogger } from "react-icons/fa";
 import Link from "next/link";
 import DropdownItem from "./DropdownItem";
 import { Container, Stack } from "@mui/material";
+import { useAuthContext } from "@/context/UseAuth";
 
 const drawerWidth = 240;
 const navItems = [
@@ -75,6 +76,9 @@ function Header(props) {
   const open = Boolean(anchorEl);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const { isUserLogin, signIn } = useAuthContext();
+  console.log("🚀 ~ file: Header.jsx:80 ~ Header ~ isUserLogin:", isUserLogin);
+
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -124,6 +128,7 @@ function Header(props) {
               <Link href={"/"}>
                 <FaBlogger size={30} />
               </Link>
+              {isUserLogin?"yes":"no"}
             </Box>
             <Box sx={{ display: { xs: "block", sm: "none" } }}>
               <IconButton
